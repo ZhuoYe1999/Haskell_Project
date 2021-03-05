@@ -1,0 +1,47 @@
+name:                groupproject
+version:             0.1.0.0
+-- synopsis:
+-- description:
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     DataBase
+                       , HTTPRequest
+                       , IO
+                       , DataStructures
+                       , JSONParser
+  build-depends:       base >= 4.7 && < 5
+                       , HDBC
+                       , HDBC-sqlite3
+                       , http-client
+                       , datetime
+                       , http-conduit
+                       , network-uri
+                       , aeson
+                       , bytestring
+  default-language:    Haskell2010
+
+
+executable groupproject-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , groupproject
+                     , http-conduit
+                     , datetime
+  default-language:    Haskell2010
+
+test-suite groupproject-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , groupproject
+                     , HUnit
+                     , bytestring
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+
